@@ -41,6 +41,8 @@ void uv_exit(uv_work_t* req, int status)
         NanNew<Number>(-1)
     };
 
+    callback->Call(2, argv);
+
     delete callback;
 }
 
@@ -61,7 +63,7 @@ void uv_req(uv_work_t* req, int status)
 void* threadFun(void*) {
     uv_work_t* uv;
 
-    for(int i = 0; ;i++)
+    for(int i = 0; ; i++)
     {
         uv = new uv_work_t;
         uv->data = (void *)new int;
